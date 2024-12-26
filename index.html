@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TipsterPay</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to CSS -->
+</head>
+<body>
+    <div id="content-overlay">
+        <nav>
+            <ul>
+                <li><img src="logo.jpg" alt="Restaurant Tip Payment Logo" style="height: 40px; margin-right: 20px;"></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#select-restaurant">Select Restaurant</a></li>
+                <li><a href="#tip-calculator">Tip Calculator</a></li>
+                <li><a href="#feedback">Feedback</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+
+        <!-- Home Section -->
+        <section id="home">
+            <h1>Welcome to TipsterPay!</h1>
+            <p>Making tipping easy and transparent, just like a modern dining experience.</p>
+            <p>Our platform helps customers conveniently calculate gratuity based on their bill, choose a tip percentage, and even leave feedback about their service. We aim to provide a seamless user experience, giving both diners and waitstaff a better dining interaction.</p>
+        </section>
+
+        <!-- Select Restaurant Section -->
+        <section id="select-restaurant">
+            <h2>Select Your Restaurant</h2>
+            <label for="restaurant">Restaurant:</label>
+            <select id="restaurant" onchange="displayRestaurantInfo()">
+                <option value="">--Select Restaurant--</option>
+                <option value="restaurant1">Restaurant 1</option>
+                <option value="restaurant2">Restaurant 2</option>
+                <option value="restaurant3">Restaurant 3</option>
+                <option value="restaurant4">Restaurant 4</option>
+            </select>
+
+            <div id="restaurantInfo" style="margin-top: 20px; font-weight: bold;"></div>
+
+            <p>Select a restaurant to proceed with gratuity calculations for your dining experience.</p>
+        </section>
+
+        <!-- Tip Calculator Section -->
+        <section id="tip-calculator">
+            <h2>Tip Calculator</h2>
+            <label for="billAmount">Bill Amount:</label>
+            <input type="number" id="billAmount" placeholder="Bill amount will appear here" readonly>
+
+            <label for="tipPercentage">Tip Percentage (%):</label>
+            <input type="number" id="tipPercentage" value="15" required>
+
+            <button onclick="calculateGratuity()">Calculate Tip</button>
+
+            <div id="result"></div>
+
+            <div id="paymentForm" style="display: none; margin-top: 20px;">
+                <h3>Proceed to Online Payment</h3>
+                <p>Your gratuity has been calculated! Please click "Pay Now" to proceed with the payment.</p>
+                <button onclick="processOnlinePayment()">Pay Now</button>
+            </div>
+
+            <p>Use this calculator to calculate the tip based on your bill amount and desired percentage. You can also pay the gratuity online directly through this platform.</p>
+        </section>
+
+        <!-- Waiter Feedback Section -->
+        <section id="feedback">
+            <h2>Waiter Feedback</h2>
+            <form id="feedbackForm">
+                <label for="waiterName">Waiter's Name (Optional):</label>
+                <input type="text" id="waiterName" placeholder="Enter waiter's name">
+
+                <label for="serviceRating">Rate the Service (1-5):</label>
+                <input type="number" id="serviceRating" min="1" max="5" placeholder="Rate 1 to 5" required>
+
+                <label for="comments">Comments:</label>
+                <textarea id="comments" rows="4" placeholder="Leave your feedback here..." required></textarea>
+
+                <button type="button" onclick="submitFeedback()">Submit Feedback</button>
+            </form>
+            <div id="feedbackResult" style="margin-top: 20px; font-weight: bold; color: #355c7d;"></div>
+
+            <p>Your feedback helps us improve our service. Please let us know how we did, and if you have any suggestions for us.</p>
+        </section>
+
+        <!-- About Tip Section -->
+        <section id="about">
+            <h2>About TipsterPay</h2>
+            <p>TipsterPay is a revolutionary platform designed to simplify, enhance, and modernize the tipping experience for restaurant patrons and service staff alike. Our goal is to create a seamless, efficient, and transparent process for gratuity calculations, so that both diners and waitstaff can focus more on enjoying the dining experience.</p>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <p>If you have any questions, feedback, or need support, feel free to reach out to us.</p>
+            <p>Email: <a href="mailto:example@email.com">example@email.com</a></p>
+            <p>Phone: +1 234 567 890</p>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2024 TipsterPay | <a href="#about">Learn More</a> | <a href="#contact">Contact Us</a>
+    </footer>
+
+    <script src="script.js"></script> <!-- Link to JavaScript -->
+</body>
+</html>
