@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TipsterPay</title>
     <style>
+        /* General Styles */
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
@@ -16,51 +17,78 @@
         #content-overlay {
             background: #1f1f1f;
             min-height: 100vh;
-            border-radius: 15px;
             padding: 10px;
+            border-radius: 15px;
             box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.8);
         }
 
+        h1, h2 {
+            text-align: center;
+            color: #f2a365;
+        }
+
+        /* Navigation */
         nav {
             background: #3a3a3a;
             color: white;
-            padding: 15px 0;
-            text-align: center;
+            padding: 10px 20px;
             position: sticky;
             top: 0;
             z-index: 100;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
 
-        nav ul {
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            height: 40px;
+            max-width: 100%;
+        }
+
+        .nav-links {
             list-style: none;
             padding: 0;
             margin: 0;
             display: flex;
-            justify-content: center;
+            gap: 15px;
+            transition: all 0.3s ease;
         }
 
-        nav li {
-            margin: 0 15px;
+        .nav-links li {
+            margin: 0;
         }
 
-        nav a {
+        .nav-links a {
             text-decoration: none;
             color: #f2a365;
             padding: 10px 15px;
             border-radius: 4px;
-            transition: all 0.3s ease;
             font-weight: bold;
+            transition: all 0.3s ease;
         }
 
-        nav a:hover {
+        .nav-links a:hover {
             background-color: #4a4a4a;
             transform: scale(1.1);
         }
 
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #f2a365;
+            cursor: pointer;
+        }
+
+        /* Section Styles */
         section {
-            padding: 40px 20px;
-            width: 100%;
+            padding: 20px;
             margin: 20px 0;
             background: linear-gradient(to bottom right, #3a3a3a, #2c2c2c);
             color: #e0e0e0;
@@ -68,72 +96,115 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
         }
 
-        h1, h2 {
-            text-align: center;
-            color: #f2a365;
-            margin-bottom: 10px;
-            position: relative;
-        }
-
-        h2::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 3px;
-            background-color: #f2a365;
-            margin: 8px auto 0;
-            border-radius: 2px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-            color: #fff;
-        }
-
         input, textarea, select {
-            width: 50%; /* Reduced width to half of the page */
-            padding: 12px;
+            width: 100%;
+            max-width: 400px;
+            padding: 10px;
             margin-bottom: 16px;
             border: 1px solid #ccc;
             border-radius: 4px;
-            box-sizing: border-box;
             font-size: 16px;
-            transition: all 0.3s ease;
+            box-sizing: border-box;
         }
 
-        textarea {
-            resize: vertical;
+        /* Waiter Feedback Section */
+        #feedback {
+	    width: 100%;
+            
+            margin: 20px auto;
+            padding: 20px;
+            background: linear-gradient(to bottom right, #3a3a3a, #2c2c2c);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            color: #e0e0e0;
         }
 
-        input:focus, textarea:focus, select:focus {
-            border-color: #355c7d;
-            outline: none;
-            box-shadow: 0 0 10px rgba(53, 92, 125, 0.7);
+        #feedback h2 {
+            text-align: center;
+            color: #f2a365;
+            margin-bottom: 15px;
         }
 
-        button {
+        #feedback label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        #feedback input, #feedback textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background: #3a3a3a;
+            color: #e0e0e0;
+        }
+
+        #feedback button {
+            width: 40%;
+            padding: 10px;
+            font-size: 16px;
             background: #f2a365;
             border: none;
-            color: 1f1f1f;
-            padding: 12px 20px;
-            font-size: 16px;
             border-radius: 4px;
             cursor: pointer;
-            margin-top: 10px;
-            transition: all 0.3s ease;
+            color: #2c2c2c;
         }
 
-        button:hover {
+        #feedback button:hover {
             background: #d18b51;
-            transform: scale(1.05);
-        }
-    
-        section h1, section h2, section p, section form {
-            padding: 0 20px;
         }
 
+        /* Tip Calculator Section */
+        #tip-calculator {
+            width: 100%;
+            margin: 20px auto;
+            padding: 20px;
+            background: linear-gradient(to bottom right, #3a3a3a, #2c2c2c);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            color: #e0e0e0;
+        }
+
+        #tip-calculator h2 {
+            text-align: center;
+            color: #f2a365;
+            margin-bottom: 15px;
+        }
+
+        #tip-calculator label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        #tip-calculator input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background: #3a3a3a;
+            color: #e0e0e0;
+        }
+
+        #tip-calculator button {
+            width: 40%;
+            padding: 10px;
+            font-size: 16px;
+            background: #f2a365;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            color: #2c2c2c;
+        }
+
+        #tip-calculator button:hover {
+            background: #d18b51;
+        }
+
+        /* Footer */
         footer {
             text-align: center;
             padding: 20px;
@@ -152,20 +223,52 @@
         footer a:hover {
             color: #f8b195;
         }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                display: none;
+            }
+
+            .nav-links.active {
+                display: flex;
+                background: #3a3a3a;
+                padding: 10px;
+                border-radius: 4px;
+            }
+
+            .hamburger {
+                display: block;
+            }
+        }
+
+        @media (max-width: 480px) {
+            section {
+                padding: 15px;
+            }
+
+            input, textarea, select {
+                font-size: 14px;
+            }
+        }
     </style>
 </head>
 <body>
     <div id="content-overlay">
         <nav>
-            <ul>
-		<li><img src="logo.jpg" alt="Restaurant Tip Payment Logo" style="height: 40px; margin-right: 20px;"></li> <!-- Logo added -->
-                <li><a href="#home">Home</a></li>
-                <li><a href="#select-restaurant">Select Restaurant</a></li> <!-- New section link -->
-                <li><a href="#tip-calculator">Tip Calculator</a></li>
-                <li><a href="#feedback">Feedback</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+            <div class="nav-container">
+                <img src="logo.jpg" alt="Restaurant Tip Payment Logo" class="logo">
+                <button class="hamburger" onclick="toggleMenu()">☰</button>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#select-restaurant">Select Restaurant</a></li>
+                    <li><a href="#tip-calculator">Tip Calculator</a></li>
+                    <li><a href="#feedback">Feedback</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
         </nav>
 
         <!-- Home Section -->
@@ -222,6 +325,7 @@
             <label for="tipPercentage">Tip Percentage (%):</label>
             <input type="number" id="tipPercentage" value="15" required>
 
+		<br>
             <button onclick="calculateGratuity()">Calculate Tip</button>
 
             <div id="result"></div>
@@ -248,139 +352,133 @@
                 <label for="comments">Comments:</label>
                 <textarea id="comments" rows="4" placeholder="Leave your feedback here..." required></textarea>
 
-                <button type="button" onclick="submitFeedback()">Submit Feedback</button>
+               <br> <button type="button" onclick="submitFeedback()">Submit Feedback</button>
             </form>
             <div id="feedbackResult" style="margin-top: 20px; font-weight: bold; color: #355c7d;">
                 <!-- Feedback result will appear here -->
             </div>
-
             <p>Your feedback helps us improve our service. Please let us know how we did, and if you have any suggestions for us.</p>
         </section>
 
         <!-- About Tip Section -->
         <section id="about">
-            <h2>ABOUT TipsterPay</h2>
-            <p>TipsterPay is a revolutionary platform designed to simplify, enhance, and modernize the tipping experience for restaurant patrons and service staff alike. Our goal is to create a seamless, efficient, and transparent process for gratuity calculations, so that both diners and waitstaff can focus more on enjoying the dining experience.</p>
-
-<p>In today’s fast-paced world, many people prefer convenience, and TipsterPay provides just that. Our intuitive interface allows customers to easily calculate their tip based on their bill amount and preferred percentage. Whether you're dining at a casual eatery or a five-star restaurant, TipsterPay ensures that the tipping process is quick and stress-free.</p>
-
-<h3>Key Features:</h3>
-<p>
-Easy Tip Calculation: Just enter your bill amount and select your desired tip percentage to instantly see the gratuity amount and total.</p>
-<p>
-Online Payment Integration: Once the tip is calculated, diners can easily proceed with online payments, making tipping more convenient and secure.</p>
-<p>
-Customizable Options: Choose from various pre-set tip percentages or manually input your preferred percentage to match your level of satisfaction with the service.</p>
-<p>
-Restaurant and Table Selection: Select your restaurant and table number to automatically generate the appropriate bill amount for tipping.</p>
-<p>
-Waiter Feedback: After calculating the tip, leave feedback for your server, helping restaurants improve customer service and acknowledge excellent performance.</p>
-<p>
-Instant Updates: No more confusion about tip amounts or changes to the bill—everything is calculated instantly and clearly.</p>
-<p>
-At TipsterPay, we understand that tipping is not just about money—it’s about recognizing hard work, dedication, and great service. By making the process simple and transparent, we help ensure that both patrons and servers have a positive, enjoyable experience every time.
-</p>
-<p>
-We’re committed to improving the tipping experience, empowering customers with the tools they need to express their appreciation for good service. Whether you're a regular diner or new to the platform, TipsterPay guarantees a seamless and rewarding experience.
-Join us today in revolutionizing the way we tip and thank service staff for their hard work!
-</p>
+            <h2>About TipsterPay</h2>
+            <p>TipsterPay is a revolutionary platform designed to simplify, enhance, and digitize the tipping experience in restaurants. By streamlining gratuity calculation, payment, and feedback, TipsterPay ensures a smoother experience for both customers and waitstaff.</p>
         </section>
 
         <!-- Contact Section -->
         <section id="contact">
             <h2>Contact Us</h2>
-            <p>If you have any questions, feedback, or need support, feel free to reach out to us.</p>
-            <p>Email: <a href="mailto:example@email.com">example@email.com</a></p>
-            <p>Phone: +1 234 567 890</p>
+            <p>If you have any questions or suggestions, feel free to reach out to us!</p>
+            <p>Email: <a href="mailto:support@tipsterpay.com">support@tipsterpay.com</a></p>
+            <p>Phone: 1-800-TIP-1234</p>
         </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>© 2024 TipsterPay. All rights reserved.</p>
+            <p>Follow us on: <a href="#">Facebook</a> | <a href="#">Twitter</a> | <a href="#">Instagram</a></p>
+        </footer>
     </div>
 
-    <!-- Footer -->
-    <footer>
-        &copy; 2024 TipsterPay | <a href="#about">Learn More</a> | <a href="#contact">Contact Us</a>
-    </footer>
-
     <script>
-        const restaurantInfo = {
-            "restaurant1": "Restaurant 1 offers a variety of Italian dishes and a cozy atmosphere.",
-            "restaurant2": "Restaurant 2 specializes in fresh seafood with an oceanfront view.",
-            "restaurant3": "Restaurant 3 is known for its authentic Asian fusion cuisine.",
-            "restaurant4": "Restaurant 4 provides a fine dining experience with a full wine list."
-        };
+        // Toggle Navigation Menu for Mobile View
+        function toggleMenu() {
+            const navLinks = document.getElementById('nav-links');
+            navLinks.classList.toggle('active');
+        }
 
+        // Display Restaurant Information
         function displayRestaurantInfo() {
-            const restaurant = document.getElementById("restaurant").value;
-            const restaurantInfoDisplay = document.getElementById("restaurantInfo");
-
-            if (restaurant) {
-                restaurantInfoDisplay.innerHTML = restaurantInfo[restaurant];
+            const restaurantSelect = document.getElementById('restaurant');
+            const restaurantInfo = document.getElementById('restaurantInfo');
+            if (restaurantSelect.value) {
+                restaurantInfo.innerHTML = 'Selected Restaurant: ' + restaurantSelect.options[restaurantSelect.selectedIndex].text;
             } else {
-                restaurantInfoDisplay.innerHTML = '';
+                restaurantInfo.innerHTML = '';
             }
         }
 
-        const tablePrices = {
-            "1": 500,
-            "2": 700,
-            "3": 600,
-            "4": 400
-        };
-
+        // Display Table Price Information
         function displayTablePrice() {
-            const tableNumber = document.getElementById("tableNumber").value;
-            const billAmountInput = document.getElementById("billAmount");
+            const tableSelect = document.getElementById('tableNumber');
+            const waiterNameDisplay = document.getElementById('waiterNameDisplay');
+            const tableNumber = tableSelect.value;
+            let priceInfo = '';
+            let waiterName = '';
 
-            if (tableNumber) {
-                const price = tablePrices[tableNumber];
-                billAmountInput.value = price;
-            } else {
-                billAmountInput.value = '';
+            // Set pricing based on table selection
+            switch (tableNumber) {
+                case '1':
+                    priceInfo = 'Price: $45.00';
+                    waiterName = 'Waiter: Sarah';
+                    break;
+                case '2':
+                    priceInfo = 'Price: $60.00';
+                    waiterName = 'Waiter: John';
+                    break;
+                case '3':
+                    priceInfo = 'Price: $75.00';
+                    waiterName = 'Waiter: Emily';
+                    break;
+                case '4':
+                    priceInfo = 'Price: $90.00';
+                    waiterName = 'Waiter: Mark';
+                    break;
+                default:
+                    priceInfo = 'Price: $0.00';
+                    waiterName = 'Waiter: N/A';
+                    break;
             }
+
+            // Display the results
+            document.getElementById('billAmount').value = priceInfo.split('$')[1]; // Extract price from string
+            waiterNameDisplay.innerHTML = waiterName;
         }
 
+        // Calculate Gratuity
         function calculateGratuity() {
-            const billAmount = parseFloat(document.getElementById("billAmount").value);
-            const tipPercentage = parseFloat(document.getElementById("tipPercentage").value);
+            const billAmount = parseFloat(document.getElementById('billAmount').value);
+            const tipPercentage = parseFloat(document.getElementById('tipPercentage').value);
+            const resultDiv = document.getElementById('result');
 
-            if (isNaN(billAmount) || isNaN(tipPercentage) || billAmount <= 0 || tipPercentage < 0) {
-                alert("Please enter valid positive numbers.");
+            if (isNaN(billAmount) || isNaN(tipPercentage)) {
+                resultDiv.innerHTML = 'Please enter valid numbers for both the bill amount and the tip percentage.';
                 return;
             }
 
-            const tipAmount = (billAmount * tipPercentage) / 100;
-            const totalAmount = billAmount + tipAmount;
+            const gratuity = billAmount * (tipPercentage / 100);
+            const totalAmount = billAmount + gratuity;
 
-            document.getElementById("result").innerHTML = `
-                Tip Amount: ₹${tipAmount.toFixed(2)}<br>
-                Total Amount: ₹${totalAmount.toFixed(2)}
-            `
-            document.getElementById("paymentForm").style.display = "block";
-        }
-
-        function processOnlinePayment() {
-            alert("Online payment completed successfully! Thank you for your tip.");
-            document.getElementById("paymentForm").style.display = "none";
-            document.getElementById("result").innerHTML += "<br>Payment Status: Successful!";
-        }
-
-        function submitFeedback() {
-            const waiterName = document.getElementById("waiterName").value;
-            const serviceRating = document.getElementById("serviceRating").value;
-            const comments = document.getElementById("comments").value;
-
-            if (!serviceRating || serviceRating < 1 || serviceRating > 5) {
-                alert("Please provide a valid rating between 1 and 5.");
-                return;
-            }
-
-            document.getElementById("feedbackResult").innerHTML = `
-                Thank you for your feedback!<br>
-                Waiter: ${waiterName || "N/A"}<br>
-                Rating: ${serviceRating}/5<br>
-                Comments: ${comments}
+            resultDiv.innerHTML = `
+                <p>Gratuity (Tip): $${gratuity.toFixed(2)}</p>
+                <p>Total Amount (Bill + Tip): $${totalAmount.toFixed(2)}</p>
             `;
 
-            document.getElementById("feedbackForm").reset();
+            // Show the payment option
+            document.getElementById('paymentForm').style.display = 'block';
+        }
+
+        // Process Online Payment
+        function processOnlinePayment() {
+            alert('Payment successfully processed!');
+        }
+
+        // Submit Feedback
+        function submitFeedback() {
+            const waiterName = document.getElementById('waiterName').value;
+            const serviceRating = document.getElementById('serviceRating').value;
+            const comments = document.getElementById('comments').value;
+            const feedbackResult = document.getElementById('feedbackResult');
+
+            // Validate inputs
+            if (!serviceRating || !comments) {
+                feedbackResult.innerHTML = 'Please provide a rating and comments.';
+                return;
+            }
+
+            // Display feedback result
+            feedbackResult.innerHTML = `Thank you for your feedback! You rated the service: ${serviceRating}/5.`;
         }
     </script>
 </body>
